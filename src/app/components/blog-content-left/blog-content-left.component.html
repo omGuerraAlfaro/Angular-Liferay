@@ -1,0 +1,223 @@
+<div class="col-md-9 movileBlogs">
+
+    <div id="porletSearchNeoris">
+        <div class="row">
+            <div id="allFilters" class="col-md-4 col-xs-12">
+                <div class="headersFilter" onclick="showAndHide('categoryFilterDiv');">
+                    <!-- <liferay-ui:message key="serchneoris.categorys" /> -->
+                    <span class="icon-minus icon-monospaced _categoryFilterDiv"></span>
+                </div>
+
+                <hr>
+
+                <div id="categoryFilterDiv">
+                    <!-- <% int index=0; for (Category o : categorys) { if (o.getCountCategoty() !=0) {%>
+                        <div class="categoryBox">
+                            <input class="checkboxFilter"
+                                onclick="categoryColor(<%=index %>); addedNameCheckBox('<%=o.getTitleCategory()%>');"
+                                type="checkbox" name="<%=o.getTitleCategory()%>" value="<%=o.getTitleCategory()%>">
+                            <span id="categoryC<%=index%>">
+                                <%=o.getTitleCategory()%> (<%=o.getCountCategoty() %>)
+                            </span>
+                            <% index++; %>
+                        </div>
+                        <%} }%> -->
+                </div>
+                <div id="categoryCheckboxFilter" style="display:none"></div>
+
+
+
+                <div class="headersFilter" onclick="showAndHide('keywordFilterDiv');">
+
+                    <span class="icon-plus icon-monospaced _keywordFilterDiv"></span>
+                </div>
+
+                <hr>
+
+                <div id="keywordFilterDiv" class="animationHide" style="display:none;">
+                    <ul>
+                        <!-- <% int index2=0; for (String key : keywords) { %>
+                            <li onclick="addKeyword('<%=key%>','classKey<%=index2%> ');" class="classKey<%=index2%>">
+                                <span class="keyBox">
+                                    <%=key %>
+                                        <% index2++; %>
+                                </span>
+                            </li>
+                            <%} %> -->
+                    </ul>
+                </div>
+
+                <div id="keywordFilterDiv" class="animationHide" style="display:none;">
+                    <!-- <liferay-ui:message key="serchneoris.keywordsWithout" /> -->
+                </div>
+
+
+                <div id="keywordFilter" style="display:none"></div>
+
+
+                <div class="headersFilter" onclick="showAndHide('dateFilterDiv');">
+                    <!-- <liferay-ui:message key="serchneoris.fecha" /> -->
+                    <span class="icon-plus icon-monospaced _dateFilterDiv"></span>
+                </div>
+
+                <hr>
+
+                <div id="dateFilterDiv" class="animationHide" style="display:none;">
+                    <div class="dateBox">
+                        <input onclick="addClassRadio('1')" id="filterDD1" class="radioFilter" type="radio"
+                            name="dateFilter" value="semana">
+                        <span id="filterD1">
+                            <!-- <liferay-ui:message key="serchneoris.semana" /> -->
+                        </span>
+                    </div>
+
+                    <div class="dateBox">
+                        <input onclick="addClassRadio('2')" id="filterDD2" class="radioFilter" type="radio"
+                            name="dateFilter" value="mes">
+                        <span id="filterD2">
+                            <!-- <liferay-ui:message key="serchneoris.mes" /> -->
+                        </span>
+                    </div>
+
+                    <div class="dateBox">
+                        <input onclick="addClassRadio('3')" id="filterDD3" class="radioFilter" type="radio"
+                            name="dateFilter" value="anio" checked>
+                        <span id="filterD3" class="colorBlue">
+                            <!-- <liferay-ui:message key="serchneoris.anio" /> -->
+                        </span>
+                    </div>
+
+                    <div class="dateBox">
+                        <input onclick="addClassRadio('4')" id="filterDD4" class="radioFilter" type="radio"
+                            name="dateFilter" value="custom">
+                        <span id="filterD4">
+                            <!-- <liferay-ui:message key="serchneoris.customDate" /> -->
+                        </span>
+                    </div>
+
+                    <div id="dataFilter" style="display:none;">
+                        <input placeholder='<liferay-ui:message key="serchneoris.desde"/>' type="text" id="fDesde"
+                            class="dateControl" name="<portlet:namespace/>fDesde">
+                        <span id="iconDesde" class="icon-calendar icon-monospaced iconNeoris"
+                            style="width: 1rem;"></span>
+                        <input placeholder='<liferay-ui:message key="serchneoris.hasta"/>' type="text" id="fHasta"
+                            class="dateControl" name="<portlet:namespace/>fHasta">
+                        <span id="iconHasta" class="icon-calendar icon-monospaced iconNeoris"
+                            style="width: 1rem;"></span>
+                        <input type="hidden" id="dateInicio" name="<portlet:namespace/>dateInicio">
+                        <input type="hidden" id="dateFin" name="<portlet:namespace/>dateFin">
+                    </div>
+
+                    <div id="datafilter" style="display:none">Value3</div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- 
+<div id="allBlogs" class="col-md-8 col-xs-12">
+
+    <div id="loader" style="display: none;"><liferay-ui:message key="serchneoris.cargando" /></div>
+    <div id="noResults" style="display: none;"><liferay-ui:message key="serchneoris.sinResultados" /></div>
+
+
+    <div id="gridEvents">
+        <div class="row">
+            <% for (Blog blog: eventoslist) { %>
+
+                <div class="eventBlog col-md-12 col-xs-12">
+                    <div class="row">
+                        <div class="imageBlogs col-md-12 col-xs-12">
+                            <div class="aspect-ratio aspect-ratio-16-to-9">
+                                <img class="aspect-ratio-item aspect-ratio-item-left-middle"
+                                    src="<%=blog.getImage() %>">
+                            </div>
+                        </div>
+                        <div class="contentBlogs col-md-12 col-xs-12">
+                            <p class="category">
+                                <%=blog.getCategory() %>
+                            </p>
+                            <p class="title">
+                                <%=blog.getTitle() %>
+                            </p>
+                            <p class="date"><liferay-ui:message key='serchneoris.postedBy' /> <span
+                                    class="personPublisher">
+                                    <%=blog.getCreatedBy() %>
+                                </span> | <span class="date">
+                                    <%=blog.getDate() %>
+                                </span> </p>
+                            <p class="abstract">
+                                <%=blog.getAbstract() %>
+                            </p>
+                            <p style="text-align:right;"><a class="goToDetail"
+                                    href="<%=blog.getDetailFriendyURL() %>"><liferay-ui:message
+                                        key="serchneoris.readMore" /> <span
+                                        class="icon icon-arrow-right icon-monospaced"></span></a></p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <%} %>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="pagesInfo" style="display:none;">
+        <span id="pageNumberSpan">
+            <%= pageNumer %>
+        </span>
+        <liferay-ui:message key="serchneoris.de" />
+        <span id="totalPagesSpan">
+            <%= numPages %>
+        </span>
+    </div>
+    <div id="gridPaginator" class="gridPaginator <%=numPages<=1 ? " gridHidden" : "" %> ">
+
+
+        <div class="stylePaginator">
+            <span id="previusPage" class="<%=pageNumer==1 ? " iconLimit" : "" %>" onclick="previousPage();">
+                <liferay-ui:message key="serchneoris.atras" /></span>
+
+            <% if (numPages <=3) { for (int i=1; i <=numPages; i++) { if (pageNumer==i) { %>
+                <span class="currentPage">
+                    <%=i %>
+                </span>
+                <% } else { %>
+                    <span onclick="goToPage(<%=i %>)">
+                        <%=i %>
+                    </span>
+                    <% } } } else { for (int i=1; i <=2; i++) { if (pageNumer==i) { %>
+
+                        <span class="currentPage">
+                            <%=i %>
+                        </span>
+                        <% } else { %>
+                            <span onclick="goToPage(<%=i %>)">
+                                <%=i %>
+                            </span>
+                            <% } } %>
+                                <span class="puntosSuspensivos">...</span> <span
+                                    onclick="goToPage(<%=numPages %>)">
+                                    <%=numPages %>
+                                </span>
+                                <% } %>
+
+                                    <span id="nextPage" style="margin-left:10px;"
+                                        class="<%=pageNumer==numPages ? " iconLimit" : "" %>"
+                                        onclick="nextPage();"> <liferay-ui:message
+                                            key="serchneoris.siguiente" /></span>
+        </div>
+    </div>
+</div> -->

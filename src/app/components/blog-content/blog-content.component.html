@@ -1,0 +1,38 @@
+<div class="eventBlog col-md-12 col-xs-12">
+    <div class="row">
+        <div *ngIf="contentBlog.length; else noData">
+            <div *ngFor="let blog of contentBlog; let isLast=last">
+                <div class="imageBlogs col-md-12 col-xs-12">
+                    <img [src]="blog.imagen" alt="{{blog.titulo}}" width="100%">
+                </div>
+
+                <div class="contentBlogs col-md-12 col-xs-12">
+                    <h4 class="title">
+                        {{blog.titulo}}
+                    </h4>
+
+                    <div class="date">
+                        <small>
+                            <i class="icon-calendar"></i>
+                            {{blog.fecha}}
+                        </small>
+                    </div>
+
+                    <div class="abstract m-0">
+                        {{blog.texto}}
+                    </div>
+
+                    <div class="containerReadMoreEvent my-3">
+                        <a [href]="blog.link">Read more<i class="icon-arrow-right"></i></a>
+                    </div>
+
+                </div>
+                <hr *ngIf="!isLast">
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noData>
+        <div>No hay datos</div>
+    </ng-template>
+</div>
